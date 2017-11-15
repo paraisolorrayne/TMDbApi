@@ -11,7 +11,7 @@ import Moya
 
 public struct BusinessError: Codable, Error {
 	var code: String?
-	var text: String?
+	var message: String?
 	var title: String?
 }
 
