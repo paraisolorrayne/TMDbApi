@@ -11,7 +11,6 @@
 		690B60B2F1B2868D903CAFB4 /* Pods_TMDbApi.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = A441144EF1AC9E9209429C2B /* Pods_TMDbApi.framework */; };
 		CF8173C4253EF4A9E3D63DFE /* Pods_TMDbApiTests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = C788B7EE5C91CE4A55F07F20 /* Pods_TMDbApiTests.framework */; };
 		FDE367DD1FBC7C9100875C94 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = FDE367DC1FBC7C9100875C94 /* AppDelegate.swift */; };
-		FDE367DF1FBC7C9100875C94 /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = FDE367DE1FBC7C9100875C94 /* ViewController.swift */; };
 		FDE367E21FBC7C9100875C94 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = FDE367E01FBC7C9100875C94 /* Main.storyboard */; };
 		FDE367E51FBC7C9100875C94 /* TMDbApi.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = FDE367E31FBC7C9100875C94 /* TMDbApi.xcdatamodeld */; };
 		FDE367E71FBC7C9100875C94 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = FDE367E61FBC7C9100875C94 /* Assets.xcassets */; };
@@ -19,6 +18,7 @@
 		FDE367F51FBC7C9100875C94 /* TMDbApiTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = FDE367F41FBC7C9100875C94 /* TMDbApiTests.swift */; };
 		FDE368001FBC7C9100875C94 /* TMDbApiUITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = FDE367FF1FBC7C9100875C94 /* TMDbApiUITests.swift */; };
 		FDE368101FBC8B2800875C94 /* Enviroment.swift in Sources */ = {isa = PBXBuildFile; fileRef = FDE3680F1FBC8B2800875C94 /* Enviroment.swift */; };
+		FDE368151FBC966200875C94 /* ServiceError.swift in Sources */ = {isa = PBXBuildFile; fileRef = FDE368141FBC966200875C94 /* ServiceError.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -50,7 +50,6 @@
 		C788B7EE5C91CE4A55F07F20 /* Pods_TMDbApiTests.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_TMDbApiTests.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		FDE367D91FBC7C9100875C94 /* TMDbApi.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = TMDbApi.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		FDE367DC1FBC7C9100875C94 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
-		FDE367DE1FBC7C9100875C94 /* ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
 		FDE367E11FBC7C9100875C94 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
 		FDE367E41FBC7C9100875C94 /* TMDbApi.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = TMDbApi.xcdatamodel; sourceTree = "<group>"; };
 		FDE367E61FBC7C9100875C94 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
@@ -63,6 +62,7 @@
 		FDE367FF1FBC7C9100875C94 /* TMDbApiUITests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TMDbApiUITests.swift; sourceTree = "<group>"; };
 		FDE368011FBC7C9100875C94 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		FDE3680F1FBC8B2800875C94 /* Enviroment.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Enviroment.swift; sourceTree = "<group>"; };
+		FDE368141FBC966200875C94 /* ServiceError.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ServiceError.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -146,8 +146,8 @@
 				FDE3680D1FBC8A7900875C94 /* Common */,
 				FDE368131FBC8C4E00875C94 /* Extensions */,
 				FDE368111FBC8B8000875C94 /* Models */,
+				FDE368161FBC973200875C94 /* Stories */,
 				FDE368121FBC8C0600875C94 /* Transitions */,
-				FDE367DE1FBC7C9100875C94 /* ViewController.swift */,
 				FDE367E01FBC7C9100875C94 /* Main.storyboard */,
 			);
 			path = TMDbApi;
@@ -175,6 +175,7 @@
 			isa = PBXGroup;
 			children = (
 				FDE3680F1FBC8B2800875C94 /* Enviroment.swift */,
+				FDE368141FBC966200875C94 /* ServiceError.swift */,
 			);
 			path = Common;
 			sourceTree = "<group>";
@@ -209,6 +210,45 @@
 			children = (
 			);
 			path = Extensions;
+			sourceTree = "<group>";
+		};
+		FDE368161FBC973200875C94 /* Stories */ = {
+			isa = PBXGroup;
+			children = (
+				FDE368181FBC97EB00875C94 /* Assets */,
+				FDE368171FBC977900875C94 /* Movies */,
+			);
+			path = Stories;
+			sourceTree = "<group>";
+		};
+		FDE368171FBC977900875C94 /* Movies */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = Movies;
+			sourceTree = "<group>";
+		};
+		FDE368181FBC97EB00875C94 /* Assets */ = {
+			isa = PBXGroup;
+			children = (
+				FDE368191FBC983200875C94 /* Storyboards */,
+				FDE3681A1FBC983D00875C94 /* TargetTypes */,
+			);
+			path = Assets;
+			sourceTree = "<group>";
+		};
+		FDE368191FBC983200875C94 /* Storyboards */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = Storyboards;
+			sourceTree = "<group>";
+		};
+		FDE3681A1FBC983D00875C94 /* TargetTypes */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = TargetTypes;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -419,9 +459,18 @@
 			files = (
 			);
 			inputPaths = (
+				"${SRCROOT}/Pods/Target Support Files/Pods-TMDbApi/Pods-TMDbApi-frameworks.sh",
+				"${BUILT_PRODUCTS_DIR}/Alamofire/Alamofire.framework",
+				"${BUILT_PRODUCTS_DIR}/Moya/Moya.framework",
+				"${BUILT_PRODUCTS_DIR}/Result/Result.framework",
+				"${BUILT_PRODUCTS_DIR}/SnapKit/SnapKit.framework",
 			);
 			name = "[CP] Embed Pods Frameworks";
 			outputPaths = (
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/Alamofire.framework",
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/Moya.framework",
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/Result.framework",
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/SnapKit.framework",
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 			shellPath = /bin/sh;
@@ -501,8 +550,8 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				FDE368151FBC966200875C94 /* ServiceError.swift in Sources */,
 				FDE367E51FBC7C9100875C94 /* TMDbApi.xcdatamodeld in Sources */,
-				FDE367DF1FBC7C9100875C94 /* ViewController.swift in Sources */,
 				FDE368101FBC8B2800875C94 /* Enviroment.swift in Sources */,
 				FDE367DD1FBC7C9100875C94 /* AppDelegate.swift in Sources */,
 			);

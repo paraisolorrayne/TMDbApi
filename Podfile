@@ -6,7 +6,9 @@ target 'TMDbApi' do
   use_frameworks!
 
   # Pods for TMDbApi
-
+  pod 'Moya'
+  pod 'SnapKit'
+  
   target 'TMDbApiTests' do
     inherit! :search_paths
     # Pods for testing
