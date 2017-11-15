@@ -10,9 +10,7 @@ import Foundation
 
 struct Movie: Codable {
 	var adult: Bool?
-	var genres: Dictionary?
-	var idGenre: String?
-	var name: String?
+	var genres: [Genre?]
 	var homepage: String?
 	var id: String?
 	var imdb_id: String?

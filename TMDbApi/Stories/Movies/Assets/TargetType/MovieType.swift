@@ -10,15 +10,16 @@ import Foundation
 import Moya
 import Result
 enum MovieType {
-	case fetchMovie()
+	case fetchMovie(String)
 }
 
 extension MovieType: TargetType {
+	
 	var  baseURL: URL {return URL (string: Environment.sharedEnvironment.baseURL)!}
 	var path: String {
 		switch self {
-		case .fetchMovie():
-			return "search/movie?" + Environment.sharedEnvironment.appKey + "&query="
+		case .fetchMovie(let query):
+			return "search/movie?" + Environment.sharedEnvironment.appKey + "&query=" + query
 		}
 	}
 	
@@ -26,11 +27,15 @@ extension MovieType: TargetType {
 		return .get
 	}
 	
+	var headers: [String : String]? {
+		return nil
+	}
+	
 	var parameters: [String: Any]? {
 		switch self {
 		case .fetchMovie(let query):
 			return [
-				"query": phoneNumber
+				"query": query
 			]
 		default:
 			return nil
@@ -48,7 +53,7 @@ extension MovieType: TargetType {
 	
 	var sampleData: Data {
 		switch self {
-		case .fetchMovie():
+		case .fetchMovie(_):
 			return Data(fromFileWithName: "movie", ofType: "json") ?? Data()
 		}
 	}
@@ -67,7 +72,7 @@ extension MovieType: TargetType {
 					return
 				}
 				do {
-					let responseObject = try JSONDecoder().decode(WhatDoYouPrefer.self, from: data)
+					let responseObject = try JSONDecoder().decode(Movie.self, from: data)
 					completion(.success(responseObject))
 					
 				} catch {
