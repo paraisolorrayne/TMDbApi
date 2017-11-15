@@ -1,0 +1,6 @@
+framework module Pods_TMDbApi {
+  umbrella header "Pods-TMDbApi-umbrella.h"
+
+  export *
+  module * { export * }
+}
