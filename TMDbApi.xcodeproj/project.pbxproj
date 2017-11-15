@@ -141,6 +141,7 @@
 		FDE367DB1FBC7C9100875C94 /* TMDbApi */ = {
 			isa = PBXGroup;
 			children = (
+				FDE367EB1FBC7C9100875C94 /* Info.plist */,
 				FDE3680E1FBC8A9500875C94 /* Application */,
 				FDE3680D1FBC8A7900875C94 /* Common */,
 				FDE368131FBC8C4E00875C94 /* Extensions */,
@@ -184,7 +185,6 @@
 				FDE367DC1FBC7C9100875C94 /* AppDelegate.swift */,
 				FDE367E61FBC7C9100875C94 /* Assets.xcassets */,
 				FDE367E81FBC7C9100875C94 /* LaunchScreen.storyboard */,
-				FDE367EB1FBC7C9100875C94 /* Info.plist */,
 				FDE367E31FBC7C9100875C94 /* TMDbApi.xcdatamodeld */,
 			);
 			path = Application;
@@ -674,6 +674,7 @@
 				CODE_SIGN_STYLE = Automatic;
 				DEVELOPMENT_TEAM = 39H6XWV852;
 				INFOPLIST_FILE = TMDbApi/Info.plist;
+				IPHONEOS_DEPLOYMENT_TARGET = 10.0;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = zup.com.br.TMDbApi;
 				PRODUCT_NAME = "$(TARGET_NAME)";
@@ -690,6 +691,7 @@
 				CODE_SIGN_STYLE = Automatic;
 				DEVELOPMENT_TEAM = 39H6XWV852;
 				INFOPLIST_FILE = TMDbApi/Info.plist;
+				IPHONEOS_DEPLOYMENT_TARGET = 10.0;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = zup.com.br.TMDbApi;
 				PRODUCT_NAME = "$(TARGET_NAME)";
