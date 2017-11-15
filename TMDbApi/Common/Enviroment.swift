@@ -38,7 +38,7 @@ class Environment {
 		switch environment {
 		case .DEV, .DEBUG :
 			appKey = "api_key=625a7cbd9e0ae06da951620f6f0015d1"
-			baseURL = "https://api.themoviedb.org/3"
+			baseURL = "https://api.themoviedb.org/3/"
 			token = "eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJhdWQiOiI2MjVhN2NiZDllMGFlMDZkYTk1MTYyMGY2ZjAwMTVkMSIsInN1YiI6IjU4ZDI4OWI3OTI1MTQxMWFmNDAyMDFmZiIsInNjb3BlcyI6WyJhcGlfcmVhZCJdLCJ2ZXJzaW9uIjoxfQ.PBEWV2bJThrDncjp314r3Ke_udps4Sp5UePZJ44iRGI"
 			break
 		default:

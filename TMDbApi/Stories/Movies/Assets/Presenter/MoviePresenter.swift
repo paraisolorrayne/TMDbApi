@@ -16,7 +16,7 @@ public enum FetchType {
 }
 protocol MoviePresenterDelegate {
 	func didFinishToFetchData()
-	func whatIsYourMoviePresenter(presenter: MoviePresenter, sendRequestWith query:String)
+	//func whatIsYourMoviePresenter(presenter: MoviePresenter, sendRequestWith query:String)
 }
 
 class MoviePresenter {
@@ -37,9 +37,6 @@ class MoviePresenter {
 	}
 	
 	func loadData() {
-		guard let fetchMovie = fetchType else {
-			return
-		}
 		let preferType = MovieType.fetchMovie(movieName)
 		provider.request(preferType, completion: preferType.response(completion: { (result) in
 			switch result {
@@ -47,12 +44,8 @@ class MoviePresenter {
 				guard let whatDoYouPrefer = whatDoYouPrefer as? Query else {
 					return
 				}
-				switch fetchMovie {
-				case .fetchMovie:
 					let informationMovie = whatDoYouPrefer.query
 					self.setCells(whatMoviePrefer: informationMovie!)
-					break
-				}
 			case .failure(_): break
 				
 			}}))

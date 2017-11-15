@@ -10,16 +10,24 @@ import Foundation
 import Moya
 import Result
 enum MovieType {
-	case fetchMovie(String)
+	case fetchMovie(String!)
 }
 
 extension MovieType: TargetType {
 	
 	var  baseURL: URL {return URL (string: Environment.sharedEnvironment.baseURL)!}
 	var path: String {
+		/*
+		NSString *completeUrl = [NSString stringWithFormat:@"%@%@%@&query=%@", kUrlBase, kSearchMovie, kApiKey, query];
+		kUrlBase = @"https://api.themoviedb.org/3/";
+		kSearchMovie = @"search/movie?";
+		kApiKey = @"api_key=625a7cbd9e0ae06da951620f6f0015d1";
+		query
+		https://api.themoviedb.org/3/search/movie?api_key=625a7cbd9e0ae06da951620f6f0015d1&query=300
+		*/
 		switch self {
 		case .fetchMovie(let query):
-			return "search/movie?" + Environment.sharedEnvironment.appKey + "&query=" + query
+				return "search/movie?" + Environment.sharedEnvironment.appKey + "&query="
 		}
 	}
 	
@@ -37,8 +45,6 @@ extension MovieType: TargetType {
 			return [
 				"query": query
 			]
-		default:
-			return nil
 		}
 	}
 	
@@ -47,7 +53,7 @@ extension MovieType: TargetType {
 		case .fetchMovie(_):
 			return JSONEncoding.default
 		default:
-			return URLEncoding.default
+			return URLEncoding.queryString
 		}
 	}
 	

@@ -13,7 +13,7 @@ fileprivate extension UITableViewCell.Identifier {
 	static let movieInfo = UITableViewCell.Identifier("MovieResult")
 }
 
-class MovieList: UIViewController {
+class MovieList: UIViewController, UISearchBarDelegate {
 	var presenter = MoviePresenter()
 	@IBOutlet weak var tableView: UITableView!
 	@IBOutlet weak var searchBar: UISearchBar!
@@ -21,25 +21,30 @@ class MovieList: UIViewController {
 	override func viewDidLoad() {
 		super.viewDidLoad()
 		presenter.delegate = self
+		searchBar.delegate = self
 		tableView.rowHeight = UITableViewAutomaticDimension
 		tableView.estimatedRowHeight = 74.0
 	}
 	
 	public func setTypeOfView(type: FetchType) {
 		presenter.fetchType = type
-		presenter.loadData()
 	}
 	
 	func captureQuery() -> String {
 		query = searchBar.text
 		return query
 	}
+	
+	func searchBarSearchButtonClicked(_ searchBar: UISearchBar) {
+		presenter.movieName = captureQuery()
+		presenter.loadData()
+	}
 }
 
 extension MovieList: MoviePresenterDelegate {
-	func whatIsYourMoviePresenter(presenter: MoviePresenter, sendRequestWith query: String) {
-		self.query = self.captureQuery()
-	}
+//	func whatIsYourMoviePresenter(presenter: MoviePresenter, sendRequestWith query: String) {
+//		self.query = self.captureQuery()
+//	}
 	
 	func didFinishToFetchData() {
 		tableView.reloadData()
