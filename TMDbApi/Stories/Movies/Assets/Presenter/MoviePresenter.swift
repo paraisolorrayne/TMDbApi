@@ -24,7 +24,7 @@ class MoviePresenter {
 	var viewModel: MoviePresenter.ViewModel!
 	var provider = MoyaProvider<MovieType>()
 	var delegate: MoviePresenterDelegate?
-	var movieName: String!
+	var movieName: String?
 	
 	init() {
 		viewModel = ViewModel(movieName: movieName, cellViewModels: [])
@@ -37,15 +37,21 @@ class MoviePresenter {
 	}
 	
 	func loadData() {
-		let preferType = MovieType.fetchMovie(movieName)
+		guard let movieName = movieName else {
+			return
+		}
+		let preferType = MovieType.movieURL(query: movieName)
 		provider.request(preferType, completion: preferType.response(completion: { (result) in
 			switch result {
 			case .success(let whatDoYouPrefer):
 				guard let whatDoYouPrefer = whatDoYouPrefer as? Query else {
 					return
 				}
-					let informationMovie = whatDoYouPrefer.query
-					self.setCells(whatMoviePrefer: informationMovie!)
+				guard let informationMovie = whatDoYouPrefer.query else {
+					return
+				}
+				self.setCells(whatMoviePrefer: informationMovie)
+				
 			case .failure(_): break
 				
 			}}))

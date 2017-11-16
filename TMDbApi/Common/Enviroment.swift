@@ -19,11 +19,11 @@ class Environment {
 		case PRD = "Release"
 	}
 	
-	var appKey: String!
-	var token: String!
+	var appKey: String = "api_key=625a7cbd9e0ae06da951620f6f0015d1"
+	var token: String = "eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJhdWQiOiI2MjVhN2NiZDllMGFlMDZkYTk1MTYyMGY2ZjAwMTVkMSIsInN1YiI6IjU4ZDI4OWI3OTI1MTQxMWFmNDAyMDFmZiIsInNjb3BlcyI6WyJhcGlfcmVhZCJdLCJ2ZXJzaW9uIjoxfQ.PBEWV2bJThrDncjp314r3Ke_udps4Sp5UePZJ44iRGI"
 	
 	var environment: EnvironmentTypes!
-	var baseURL: String!
+	var baseURL: String = "https://api.themoviedb.org/3/"
 	
 	init() {
 		guard let environmentFromList = Bundle.main.object(forInfoDictionaryKey: "Environment") as? String ,

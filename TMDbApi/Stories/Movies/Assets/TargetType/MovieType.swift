@@ -9,25 +9,25 @@
 import Foundation
 import Moya
 import Result
+
 enum MovieType {
-	case fetchMovie(String!)
+	case movieURL(query:String)
 }
 
 extension MovieType: TargetType {
 	
 	var  baseURL: URL {return URL (string: Environment.sharedEnvironment.baseURL)!}
 	var path: String {
-		/*
-		NSString *completeUrl = [NSString stringWithFormat:@"%@%@%@&query=%@", kUrlBase, kSearchMovie, kApiKey, query];
-		kUrlBase = @"https://api.themoviedb.org/3/";
-		kSearchMovie = @"search/movie?";
-		kApiKey = @"api_key=625a7cbd9e0ae06da951620f6f0015d1";
-		query
-		https://api.themoviedb.org/3/search/movie?api_key=625a7cbd9e0ae06da951620f6f0015d1&query=300
-		*/
 		switch self {
-		case .fetchMovie(let query):
-				return "search/movie?" + Environment.sharedEnvironment.appKey + "&query="
+		case .movieURL(let query):
+			let queryEncoding = query.replacingOccurrences(of: " ", with: "+")
+			let pathUrl =  "search/movie?" + Environment.sharedEnvironment.appKey + "&query=" + queryEncoding
+			let pathEncoding = pathUrl.addingPercentEncoding(withAllowedCharacters: .urlQueryAllowed)
+			if let pathEncod = pathEncoding {
+				return pathEncod
+			} else {
+				return ""
+			}
 		}
 	}
 	
@@ -40,26 +40,16 @@ extension MovieType: TargetType {
 	}
 	
 	var parameters: [String: Any]? {
-		switch self {
-		case .fetchMovie(let query):
-			return [
-				"query": query
-			]
-		}
+		return nil
 	}
 	
 	public var parameterEncoding: ParameterEncoding {
-		switch self {
-		case .fetchMovie(_):
-			return JSONEncoding.default
-		default:
-			return URLEncoding.queryString
-		}
+			return URLEncoding.default
 	}
 	
 	var sampleData: Data {
 		switch self {
-		case .fetchMovie(_):
+		case .movieURL(_):
 			return Data(fromFileWithName: "movie", ofType: "json") ?? Data()
 		}
 	}
@@ -78,7 +68,7 @@ extension MovieType: TargetType {
 					return
 				}
 				do {
-					let responseObject = try JSONDecoder().decode(Movie.self, from: data)
+					let responseObject = try JSONDecoder().decode(Query.self, from: data)
 					completion(.success(responseObject))
 					
 				} catch {
